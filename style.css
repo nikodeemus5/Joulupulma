@@ -1,0 +1,132 @@
+/* style.css - Jatketaan aiemmasta koodista */
+
+/* Määrittää taustavärin ja perusfontin koko sivulle */
+body {
+    background-color: #444444; 
+    color: white; 
+    font-family: Arial, sans-serif;
+    text-align: center; 
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #cc0000; 
+    padding-bottom: 20px;
+}
+
+#game-container {
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 20px;
+    background-color: #333333; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+}
+
+/* UUSI: Pulma-osion tyylit */
+.puzzle-section {
+    border: 1px solid #555;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: left; /* Pulman teksti vasemmalle */
+}
+
+/* UUSI: Piilottaa osiot, joita ei ole vielä avattu */
+.hidden {
+    display: none;
+}
+
+/* UUSI: Vastauskenttien tyylittely */
+.input-group input[type="text"] {
+    padding: 8px;
+    margin-right: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #555;
+    color: white;
+}
+
+.input-group button {
+    padding: 8px 15px;
+    background-color: #006600; /* Vihreä nappi */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.input-group button:hover {
+    background-color: #008800;
+}
+
+/* UUSI: Palautteen (oikein/väärin) tyylit */
+.feedback-text {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* UUSI: Tyyli virheelliselle palautteelle */
+.error {
+    color: #ff3333; /* Kirkkaan punainen virheilmoitus */
+}
+
+/* UUSI: Tyyli oikealle palautteelle */
+.success {
+    color: #00ff00; /* Kirkkaan vihreä onnistuminen */
+}
+
+#cryptex-lock {
+    display: flex;
+    justify-content: center;
+    gap: 10px; 
+    margin: 30px auto;
+}
+
+.cryptex-roll-container {
+    width: 65px;
+    height: 90px; /* Korkeus yhden numeron näyttämiseen */
+    background-color: #222; 
+    border: 3px solid #cc0000; 
+    border-radius: 5px;
+    overflow: hidden; /* PIILOTTAA YLI MENEVÄN SISÄLLÖN */
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    position: relative; /* Tärkeä sisemmän rullan animoinnille */
+}
+
+.cryptex-roll-inner {
+    display: flex;
+    flex-direction: column; /* Numerot allekkain */
+    height: 100%; /* Vie koko korkeuden kontista */
+    transition: transform 0.3s ease-in-out; /* PEHMEÄ RULLAUSANIMAATIO */
+    position: absolute; /* Sijoitus kontrollia varten */
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.cryptex-roll-inner span {
+    width: 100%;
+    height: 90px; /* Jokainen numero vie tämän korkeuden */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: gold; 
+    flex-shrink: 0; /* Estää kutistumisen */
+}
+
+.cryptex-roll-container:hover {
+    background-color: #555; 
+}
+
+/* Yleinen nappityyli muuttuu hieman, jotta se erottuu */
+.puzzle-section button {
+    margin-top: 15px; 
+    /* ... (muut nappityylit pysyvät samoina) ... */
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joulupeli Pohja</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="game-container">
+        <h1>Jouluinen Pulmapeli</h1>
+
+        <div id="puzzle-1" class="puzzle-section active">
+            <h2>Pulma 1: Etsi lahja</h2>
+            <p>Joulupukki piilotti lahjan sinulle tähän tekstiin. Katso tarkasti jokaista kirjainta ja numeroa: A, 2, B, **5**, C, D, **0**, E, F, G, **2**, H, I, **4**. Etsi lahjan koodi!</p> 
+            <div class="input-group">
+                <input type="text" id="p1-input" placeholder="Syötä koodi tähän">
+                <button onclick="checkAnswer(1)">Tarkista</button>
+            </div>
+            <p id="p1-feedback" class="feedback-text"></p>
+        </div>
+
+        <div id="puzzle-2" class="puzzle-section hidden">
+            <h2>Pulma 2: Joulun Salalukko</h2>
+            <p>Avaa lukko valitsemalla oikea 4-numeroinen koodi. Klikkaa numeroita vaihtaaksesi niitä ylöspäin.</p>
+            <div id="cryptex-lock">
+                </div>
+            <button onclick="checkAnswer(2)">Tarkista Cryptex-koodi</button>
+            <p id="p2-feedback" class="feedback-text"></p>
+        </div>
+        <div id="puzzle-3" class="puzzle-section hidden">
+            <h2>Pulma 3: Avattu!</h2>
+            <p>Joulupukki piilotti lahjan sinulle tähän tekstiin. Katso tarkasti jokaista kirjainta ja numeroa: A, 2, B, **5**, C, D, **0**, E, F, G, **2**, H, I, **4**. Etsi lahjan koodi!</p>
+            <div class="input-group">
+                <input type="text" id="p3-input" placeholder="Syötä koodi tähän">
+                <button onclick="checkAnswer(3)">Tarkista</button>
+            </div>
+            <p id="p3-feedback" class="feedback-text"></p>
+        </div>
+
+        <div id="puzzle-4" class="puzzle-section hidden">
+            <h2>Pulma 4: Viimeinen haaste!</h2>
+            <p>Joulupukki piilotti lahjan sinulle tähän tekstiin. Katso tarkasti jokaista kirjainta ja numeroa: A, 2, B, **5**, C, D, **0**, E, F, G, **2**, H, I, **4**. Etsi lahjan koodi!</p>
+            <div class="input-group">
+                <input type="text" id="p4-input" placeholder="Syötä koodi tähän">
+                <button onclick="checkAnswer(4)">Tarkista</button>
+            </div>
+            <p id="p4-feedback" class="feedback-text"></p>
+        </div>
+
+        <div id="congratulations" class="puzzle-section hidden">
+            <h2>🎁 ONNITTELUT! 🌟</h2>
+            <p style="font-size: 1.2em; color: #00ff00;">Sait ratkaistua kaikki joulupulmat! Olet valmis vastaanottamaan lahjasi!</p>
+            <p>Tähän voit myöhemmin kirjoittaa oman, henkilökohtaisen lopputekstisi!</p>
+        </div>
+
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
