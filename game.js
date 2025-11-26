@@ -2,10 +2,10 @@
 
 // Määrätään oikeat vastaukset jokaiselle pulmavaiheelle
 const CORRECT_CODES = {
-    1: '5024',
+    1: 'JOULU',
     2: '1225', 
-    3: '5024',
-    4: '5024' 
+    3: 'PORO',
+    4: '1234' 
 };
 
 // **UUDET MUUTTUJAT CRYPTEXIÄ VARTEN**
