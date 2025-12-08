@@ -2,7 +2,7 @@
 const CORRECT_CODES = {
     1: '1827',          // Ovi (Vuosiluku kyltistä)
     2: 'PORO',
-    3: '3',             // Matikka
+    3: '2758',             // Matikka
     4: '➡️➡️⬆️⬅️',    // Sokkelo
     5: '2412',          // Salkku
     6: 'RANTASAUNA'     // Caesar

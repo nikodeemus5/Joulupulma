@@ -103,20 +103,16 @@ h1 {
     background-color: #008800;
 }
 
-/* UUSI: Palautteen (oikein/väärin) tyylit */
 .feedback-text {
     margin-top: 10px;
     font-weight: bold;
 }
-
-/* UUSI: Tyyli virheelliselle palautteelle */
 .error {
-    color: #ff3333; /* Kirkkaan punainen virheilmoitus */
+    color: #ff3333; 
 }
 
-/* UUSI: Tyyli oikealle palautteelle */
 .success {
-    color: #00ff00; /* Kirkkaan vihreä onnistuminen */
+    color: #00ff00; 
 }
 
 #cryptex-lock {
@@ -167,13 +163,10 @@ h1 {
     background-color: #555; 
 }
 
-/* Yleinen nappityyli muuttuu hieman, jotta se erottuu */
 .puzzle-section button {
     margin-top: 15px; 
-    /* ... (muut nappityylit pysyvät samoina) ... */
 }
 
-/* UUSI: Vihjelaatikot */
 .clue-box {
     background-color: #2a2a2a;
     border-left: 5px solid #cc0000;
@@ -214,7 +207,6 @@ h1 {
 
 /* --- Drag and Drop Tyylit Pulma 2 varten --- */
 
-/* DROP ZONE: Kontti pudotusalueille */
 .drop-zone {
     display: flex;
     flex-wrap: wrap;
@@ -223,7 +215,6 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* DROP TARGET: Yksittäiset pudotuskohdat */
 .drop-target {
     width: 120px;
     height: 70px;
@@ -289,7 +280,6 @@ h1 {
     font-size: 1.2em;
 }
 
-/* TYYLI: Pudotuksen aikana (visuaalinen vihje) */
 .drop-target.drag-over {
     background-color: #444444;
     border-color: #00ff00;
