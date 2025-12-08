@@ -3,56 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joulupeli Pohja</title>
+    <title>Joulun Pelastusoperaatio</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div id="game-container">
-        <h1>Jouluinen Pulmapeli</h1>
+        <h1>🎅 Joulun Pelastusoperaatio 🎄</h1>
 
         <div id="puzzle-1" class="puzzle-section active">
-            <h2>Pulma 1: Etsi lahja</h2>
-            <p>Vastaus JOULU</p> 
+            <h2>OSA 1: Kutsu</h2>
+            <p>Teidät on kutsuttu Korvatunturille. Pukki on kadonnut ja joulu on vaarassa peruutua!</p>
+            <p>Saavutte kirjeessä mainittuun osoitteeseen pukin pajalle lumimyrskyn keskellä. Edessänne on suuri ovi.</p>
+            <p>Ovi on tiukasti lukossa. Oven yläpuolella on vanha, lumen peittämä kyltti, jossa lukee:</p>
+            
+            <div class="clue-box">
+                <p style="text-align: center; font-size: 1.5em; border: 2px dashed #999; padding: 10px;">
+                    JOULUPUKIN PAJA<br>
+                    <span style="font-size: 0.7em;">Tähtikuja 1827</span>
+                </p>
+            </div>
+            
+            <div class="instruction-note">
+            Napauta numeroita sormella (tai hiirellä), niin ne pyörivät eteenpäin.
+            </div>
+            
+            <div id="cryptex-1" class="cryptex-container"></div>
+            
             <div class="input-group">
-                <input type="text" id="p1-input" placeholder="Syötä koodi tähän">
-                <button onclick="checkAnswer(1)">Tarkista</button>
+                <button onclick="checkAnswer(1)">Avaa lukko</button>
             </div>
             <p id="p1-feedback" class="feedback-text"></p>
+
         </div>
 
-        <div id="puzzle-2" class="puzzle-section hidden">
-            <h2>Pulma 2: Joulun Salalukko</h2>
-            <p>Avaa lukko valitsemalla oikea 4-numeroinen koodi. Klikkaa numeroita vaihtaaksesi niitä ylöspäin.</p>
-            <div id="cryptex-lock">
+<div id="puzzle-2" class="puzzle-section hidden">
+            <h2>OSA 2: Porojen Karsina</h2>
+            <p>Ovi aukeaa! Huoneessa porot juoksevat villeinä. Sinun täytyy rauhoittaa ne asettamalla ne oikeaan vetojärjestykseen valjaiden värien mukaan.</p>
+            
+            <div class="clue-row">
+                <div class="clue-card">
+                    <strong>Porojen Valjaat:</strong><br>
+                    🟠 Oranssi (Tilkku)<br>
+                    🟢 Vihreä (Pyry)<br>
+                    🔴 Punainen (Petteri)<br>
+                    🔵 Sininen (Kipinä)<br>
+                    🟡 Keltainen (Sipsu)<br>
+                    🟣 Violetti (Ailu)<br>
                 </div>
-            <button onclick="checkAnswer(2)">Tarkista Cryptex-koodi</button>
+                <div class="instruction-note">
+                🌈
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px;">Vedä ja pudota porojen nimet oikeisiin kohtiin</p>
+            
+            <div id="drop-zone-2" class="drop-zone">
+                <div class="drop-target" data-correct-name="PETTERI">1.</div>
+                <div class="drop-target" data-correct-name="TILKKU">2.</div>
+                <div class="drop-target" data-correct-name="SIPSU">3.</div>
+                <div class="drop-target" data-correct-name="PYRY">4.</div>
+                <div class="drop-target" data-correct-name="KIPINA">5.</div>
+                <div class="drop-target" data-correct-name="AILU">6.</div>
+            </div>
+
+            <div id="drag-elements-2" class="drag-elements-container">
+                <div class="draggable" draggable="true" data-name="TILKKU">Tilkku</div>
+                <div class="draggable" draggable="true" data-name="PYRY">Pyry</div>
+                <div class="draggable" draggable="true" data-name="PETTERI">Petteri</div>
+                <div class="draggable" draggable="true" data-name="KIPINA">Kipinä</div>
+                <div class="draggable" draggable="true" data-name="SIPSU">sipsu</div>
+                <div class="draggable" draggable="true" data-name="AILU">Ailu</div>
+            </div>
+            
+            <div class="input-group">
+                <button onclick="checkAnswer(2)">Tarkista Porojärjestys</button>
+            </div>
             <p id="p2-feedback" class="feedback-text"></p>
         </div>
+
         <div id="puzzle-3" class="puzzle-section hidden">
-            <h2>Pulma 3: Avattu!</h2>
-            <p>Vastaus PORO</p>
+            <h2>OSA 3: Salaluukku</h2>
+            <p>Porot rauhoittuvat ja huomaatte niiden heinien alla lattialuukun. Luukussa on matemaattisia symboleja.</p>
+            <div class="instruction-note">
+                <p>🟦 + 🔺 = 7</p>
+                <p>🔺 + 🔴 = 4</p>
+                <p>🟦 - 🔴 = <strong>?</strong></p>
+            </div>
+
             <div class="input-group">
-                <input type="text" id="p3-input" placeholder="Syötä koodi tähän">
-                <button onclick="checkAnswer(3)">Tarkista</button>
+                <input type="text" id="p3-input" placeholder="Vastaus">
+                <button onclick="checkAnswer(3)">Avaa luukku</button>
             </div>
             <p id="p3-feedback" class="feedback-text"></p>
         </div>
 
         <div id="puzzle-4" class="puzzle-section hidden">
-            <h2>Pulma 4: Viimeinen haaste!</h2>
-            <p>Vastaus 1234</p>
-            <div class="input-group">
-                <input type="text" id="p4-input" placeholder="Syötä koodi tähän">
-                <button onclick="checkAnswer(4)">Tarkista</button>
+            <h2>OSA 4: Kellari</h2>
+            <p>Saatte luukun auki ja huomaatte rappuset kellariin. Saavuttuanne kellariin näette seinällä kartan sokkeloista ja tajuatte sen olevan kellarin pohjapiirrustus. Kellari on aika pimeä ja sokkeloinen ja teidän täytyy käyttää kartaltalöytyviä symboleja avuksenne suunnistuksessa.</p>
+            
+            <div class="clue-box">
+                <p>🗺️ KARTTA: Eteenpäin, Oikealle, Taaksepäin, Oikealle.</p>
             </div>
+
+            <div class="instruction-note">
+                
+            </div>
+
+            <div id="cryptex-4" class="cryptex-container"></div>
+            
+            <button onclick="checkAnswer(4)" style="margin-top: 20px;">Tarkista reitti</button>
             <p id="p4-feedback" class="feedback-text"></p>
         </div>
 
+        <div id="puzzle-5" class="puzzle-section hidden">
+            <h2>Vaihe 5: Pukin Työhuone</h2>
+            <p>Selviydyitte sokkelosta! Olette nyt upeassa työhuoneessa, jossa on suuri mahonkipöytä. Pöydällä on salkku.</p>
+            <p>Salkun lukossa on neljä numeroa. Muistelette, mikä päivämäärä on pukeille kaikista tärkein...</p>
+            
+            <div class="input-group">
+                <input type="text" id="p5-input" placeholder="Syötä koodi">
+                <button onclick="checkAnswer(5)">Avaa salkku</button>
+            </div>
+            <p id="p5-feedback" class="feedback-text"></p>
+        </div>
+
+        <div id="puzzle-6" class="puzzle-section hidden">
+            <h2>Vaihe 6: Salainen Viesti</h2>
+            <p>Salkku aukeaa! Sisältä löytyy Pukin kirjoittama lappu, mutta se on koodattu ns. "Caesar-salauksella" (siirrä aakkosia eteenpäin).</p>
+            
+            <div class="clue-box">
+                <p style="letter-spacing: 3px; font-size: 1.2em;">Q Z M S Z R Z T M Z</p>
+                <hr>
+                <p style="font-size: 0.8em;">(Vihje: Siirrä jokaista kirjainta aakkosissa **yhden** pykälän eteenpäin. Q -> R, Z -> A...)</p>
+            </div>
+            <p>Missä Pukki on?</p>
+
+            <div class="input-group">
+                <input type="text" id="p6-input" placeholder="Paikka">
+                <button onclick="checkAnswer(6)">Pelasta Joulu!</button>
+            </div>
+            <p id="p6-feedback" class="feedback-text"></p>
+        </div>
+
         <div id="congratulations" class="puzzle-section hidden">
-            <h2>🎁 ONNITTELUT! 🌟</h2>
-            <p style="font-size: 1.2em; color: #00ff00;">Sait ratkaistua kaikki joulupulmat! Olet valmis vastaanottamaan lahjasi!</p>
-            <p>Tähän voit myöhemmin kirjoittaa oman, henkilökohtaisen lopputekstisi!</p>
+            <h2>🎅 JOULU ON PELASTETTU! 🎁</h2>
+            <p style="font-size: 1.2em; color: #00ff00;">Löysitte Pukin Rantasaunalta!</p>
+            <p>Hän oli unohtunut löylyihin ja menettänyt ajantajun. Kiitos teidän, lahjat saadaan jaettua ajoissa!</p>
+            <div style="font-size: 3em; margin-top: 20px;">🧖‍♂️🎄🛁</div>
         </div>
 
     </div>

@@ -16,7 +16,7 @@ h1 {
 }
 
 #game-container {
-    max-width: 800px; 
+    max-width: 900px; 
     margin: 0 auto; 
     padding: 20px;
     background-color: #333333; 
@@ -36,6 +36,47 @@ h1 {
 /* UUSI: Piilottaa osiot, joita ei ole vielä avattu */
 .hidden {
     display: none;
+}
+
+.instruction-note {
+    font-family: 'Caveat', cursive; /* Käsinkirjoitettu fontti */
+    font-size: 1.4em;
+    line-height: 1.2;
+    color: #222; /* Tumma muste, ei täysin musta */
+    background-color: #fdfd96; /* Post-it keltainen */
+    
+    padding: 15px 20px;
+    margin: 20px auto;
+    max-width: 400px;
+    
+    /* Tehdään siitä paperimainen */
+    border-radius: 2px 2px 15px 2px; /* Yksi kulma vähän pyöreämpi */
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3); /* Varjo */
+    transform: rotate(-2deg); /* Kallistetaan vähän vasemmalle */
+    
+    /* Lisätään "teippi" ylös (visuaalinen kikka) */
+    position: relative;
+    border-top: 1px solid rgba(255,255,255,0.5);
+}
+
+/* Pieni "teipinpala" lapun päälle */
+.instruction-note::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 40%;
+    width: 60px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.4); /* Läpinäkyvä teippi */
+    transform: rotate(3deg);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Hover-efekti: lappu suoristuu kun hiiri on päällä */
+.instruction-note:hover {
+    transform: rotate(0deg) scale(1.05);
+    transition: transform 0.2s ease;
+    cursor: help;
 }
 
 /* UUSI: Vastauskenttien tyylittely */
@@ -115,7 +156,8 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
+    font-size: 35px; /* Hieman pienempi jos emojit on isoja */
+    line-height: 90px;
     font-weight: bold;
     color: gold; 
     flex-shrink: 0; /* Estää kutistumisen */
@@ -129,4 +171,140 @@ h1 {
 .puzzle-section button {
     margin-top: 15px; 
     /* ... (muut nappityylit pysyvät samoina) ... */
+}
+
+/* UUSI: Vihjelaatikot */
+.clue-box {
+    background-color: #2a2a2a;
+    border-left: 5px solid #cc0000;
+    padding: 15px;
+    margin: 15px 0;
+    font-family: 'Courier New', monospace;
+}
+
+.clue-row {
+    display: flex;
+    gap: 20px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.clue-card {
+    background: #555;
+    padding: 10px;
+    border-radius: 5px;
+    flex: 1;
+    min-width: 150px;
+}
+
+.math-clue p {
+    font-size: 1.5em;
+    letter-spacing: 2px;
+    margin: 5px 0;
+}
+
+/* Tarinan intro */
+.story-intro {
+    font-style: italic;
+    color: #ddd;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #555;
+    padding-bottom: 20px;
+}
+
+/* --- Drag and Drop Tyylit Pulma 2 varten --- */
+
+/* DROP ZONE: Kontti pudotusalueille */
+.drop-zone {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* DROP TARGET: Yksittäiset pudotuskohdat */
+.drop-target {
+    width: 120px;
+    height: 70px;
+    background-color: #222222;
+    border: 3px dashed #cc0000; /* Joulunpunainen kehys */
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Nimet ylös */
+    align-items: center;
+    padding-top: 5px;
+    font-size: 0.8em;
+    color: #aaa;
+    position: relative;
+    font-weight: bold;
+}
+
+.drop-target.extra-spot {
+    opacity: 0.5; /* Hämäyslaatikot himmeämmiksi */
+    border-color: #555;
+}
+
+/* DRAG ELEMENTS: Vedettävät elementit */
+.drag-elements-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.draggable {
+    background-color: #006600; /* Vihreä pohja */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: grab;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    transition: transform 0.1s;
+}
+
+.draggable:hover {
+    background-color: #008800;
+}
+
+.draggable:active {
+    cursor: grabbing;
+    transform: scale(1.05); /* Pieni efekti raahatessa */
+}
+
+/* TYYLI: Vedettävä elementti pudotusalueella */
+.drop-target .draggable {
+    margin: 0;
+    width: 75%;
+    height: 73%;
+    position: absolute; /* Asettuu laatikon sisään */
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+/* TYYLI: Pudotuksen aikana (visuaalinen vihje) */
+.drop-target.drag-over {
+    background-color: #444444;
+    border-color: #00ff00;
+}
+
+/* Pieni animaatio väärälle vastaukselle */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.3s;
+  border-color: red !important;
 }
