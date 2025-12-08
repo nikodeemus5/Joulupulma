@@ -102,25 +102,32 @@
         <div id="puzzle-4" class="puzzle-section hidden">
             <h2>OSA 4: Kellari</h2>
             <p>Saatte luukun auki ja huomaatte rappuset kellariin. Saavuttuanne kellariin näette seinällä kartan sokkeloista ja tajuatte sen olevan kellarin pohjapiirrustus. Kellari on aika pimeä ja sokkeloinen ja teidän täytyy käyttää kartaltalöytyviä symboleja avuksenne suunnistuksessa.</p>
-            
-            <div class="clue-box">
-                <p>🗺️ KARTTA: Eteenpäin, Oikealle, Taaksepäin, Oikealle.</p>
+
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="Kellari.png" alt="Kellarin sokkelokartta, joka näyttää nuolten reitin" class="puzzle-image">
             </div>
 
             <div class="instruction-note">
-                
+            🔴 = Olet tässä. <br>
+            Käänny "?" kohdalla päästäksesi kellarin perällä olevaan huoneeseen
             </div>
 
             <div id="cryptex-4" class="cryptex-container"></div>
             
-            <button onclick="checkAnswer(4)" style="margin-top: 20px;">Tarkista reitti</button>
+            <div class="input-group">
+                <button onclick="checkAnswer(4)">Tarkista reitti</button>
+            </div>
             <p id="p4-feedback" class="feedback-text"></p>
         </div>
 
         <div id="puzzle-5" class="puzzle-section hidden">
-            <h2>Vaihe 5: Pukin Työhuone</h2>
+            <h2>OSA 5: Pukin Työhuone</h2>
             <p>Selviydyitte sokkelosta! Olette nyt upeassa työhuoneessa, jossa on suuri mahonkipöytä. Pöydällä on salkku.</p>
             <p>Salkun lukossa on neljä numeroa. Muistelette, mikä päivämäärä on pukeille kaikista tärkein...</p>
+
+            <div class="instruction-note">
+                " **** "
+            </div>
             
             <div class="input-group">
                 <input type="text" id="p5-input" placeholder="Syötä koodi">
@@ -130,14 +137,15 @@
         </div>
 
         <div id="puzzle-6" class="puzzle-section hidden">
-            <h2>Vaihe 6: Salainen Viesti</h2>
-            <p>Salkku aukeaa! Sisältä löytyy Pukin kirjoittama lappu, mutta se on koodattu ns. "Caesar-salauksella" (siirrä aakkosia eteenpäin).</p>
-            
-            <div class="clue-box">
-                <p style="letter-spacing: 3px; font-size: 1.2em;">Q Z M S Z R Z T M Z</p>
-                <hr>
-                <p style="font-size: 0.8em;">(Vihje: Siirrä jokaista kirjainta aakkosissa **yhden** pykälän eteenpäin. Q -> R, Z -> A...)</p>
+            <h2>OSA 6: Salainen Viesti</h2>
+            <p>Salkku aukeaa! Sisältä löytyy Pukin kirjoittama lappu, mutta viesti on kirjoitettu salakielellä.</p>
+
+            <div class="instruction-note">
+                N D K Q D P D R K D<br>
+                <br>
+                E -> H, U -> X, Ä -> B...
             </div>
+
             <p>Missä Pukki on?</p>
 
             <div class="input-group">
@@ -150,8 +158,7 @@
         <div id="congratulations" class="puzzle-section hidden">
             <h2>🎅 JOULU ON PELASTETTU! 🎁</h2>
             <p style="font-size: 1.2em; color: #00ff00;">Löysitte Pukin Rantasaunalta!</p>
-            <p>Hän oli unohtunut löylyihin ja menettänyt ajantajun. Kiitos teidän, lahjat saadaan jaettua ajoissa!</p>
-            <div style="font-size: 3em; margin-top: 20px;">🧖‍♂️🎄🛁</div>
+            <p>Pukki oli unohtunut löylyihin ja menettänyt ajantajun. Kiitos teidän, lahjat saadaan jaettua ajoissa!</p>
         </div>
 
     </div>

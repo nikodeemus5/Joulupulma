@@ -308,3 +308,13 @@ h1 {
   animation: shake 0.3s;
   border-color: red !important;
 }
+
+.puzzle-image {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #cc0000; /* Punainen korostus */
+    border-radius: 5px;
+    margin: 20px auto;
+    display: block;
+    box-shadow: 0 0 10px rgba(204, 0, 0, 0.5);
+}
