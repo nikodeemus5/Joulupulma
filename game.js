@@ -1,6 +1,6 @@
 // Oikeat vastaukset
 const CORRECT_CODES = {
-    1: '1827',          // Ovi (Vuosiluku kyltistä)
+    1: '7898',          // Ovi (Vuosiluku kyltistä)
     2: 'PORO',
     3: '2758',             // Matikka
     4: '➡️➡️⬆️⬅️',    // Sokkelo
@@ -16,7 +16,7 @@ const SYMBOLS_ARROWS = ['⬆️','➡️','⬇️','⬅️'];
 let lockStates = {
     1: [0, 0, 0, 0], // Pulma 1: 4 numeroa
     4: [0, 0, 0, 0]  // Pulma 4: 4 nuolta
-};
+}; 
 
 // Suoritetaan heti kun sivu latautuu
 document.addEventListener('DOMContentLoaded', () => {
