@@ -1,22 +1,26 @@
 // Oikeat vastaukset
 const CORRECT_CODES = {
-    1: '7898',          // Ovi (Vuosiluku kyltistä)
+    1: '7898',          
     2: 'PORO',
-    3: '2758',             // Matikka
-    4: '➡️➡️⬆️⬅️',    // Sokkelo
-    5: '2412',          // Salkku
-    6: 'RANTASAUNA'     // Caesar
+    3: '2758',          
+    4: '➡️➡️⬆️⬅️',    
+    5: '2412',
+    6: 'JOULU',      // UUSI PULMA 6
+    7: 'RANTASAUNA'  // ENTINEN PULMA 6 (nyt 7)
 };
 
 // Määritellään eri symbolit eri lukoille
 const SYMBOLS_NUMBERS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const SYMBOLS_ARROWS = ['⬆️','➡️','⬇️','⬅️'];
+const SYMBOLS_CRYPTEX = ['A','J','S','O','K','H','U','L','R','P'];
 
 // Tallennetaan lukkojen tilat tähän (avain on pulman ID)
 let lockStates = {
-    1: [0, 0, 0, 0], // Pulma 1: 4 numeroa
-    4: [0, 0, 0, 0]  // Pulma 4: 4 nuolta
-}; 
+    1: [0, 0, 0, 0], 
+    4: [0, 0, 0, 0],
+    5: [0, 0, 0, 0], // Lisätty, jos se puuttui
+    6: [0, 0, 0, 0, 0] // UUSI Pulma 6: 5 symbolia 'JOULU'
+};
 
 // Suoritetaan heti kun sivu latautuu
 document.addEventListener('DOMContentLoaded', () => {
@@ -28,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
  * GENERIC CRYPTEX CREATOR
  * Luo lukon haluttuun HTML-elementtiin halutuilla symboleilla
  */
-function createCryptex(puzzleId, containerId, symbols) {
+function createCryptex(puzzleId, containerId, symbols, rollCount = 4) { // LISÄYS: rollCount = 4
     const container = document.getElementById(containerId);
     if (!container) return;
 
@@ -39,9 +43,9 @@ function createCryptex(puzzleId, containerId, symbols) {
     container.style.margin = '20px auto';
 
     // Nollataan tila
-    lockStates[puzzleId] = new Array(4).fill(0);
+    lockStates[puzzleId] = new Array(rollCount).fill(0);
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < rollCount; i++) { // MUUTOS: Käytä rollCountia
         const rollContainer = document.createElement('div');
         rollContainer.classList.add('cryptex-roll-container');
         
@@ -128,11 +132,16 @@ function checkAnswer(puzzleId) {
         
     }
     else if (puzzleId === 4) {
-        // Pulma 4: Lue tila lockStates[4] ja muuta nuoliksi
         userAnswer = lockStates[4].map(i => SYMBOLS_ARROWS[i]).join('');
     } 
+    else if (puzzleId === 5) {
+        userAnswer = lockStates[5].map(i => SYMBOLS_NUMBERS[i]).join('');
+    } 
+    else if (puzzleId === 6) {
+        userAnswer = lockStates[6].map(i => SYMBOLS_CRYPTEX[i]).join('');
+    }
     else {
-        // Tekstikentät (3, 5, 6)
+        // Tekstikentät (3, 7)
         const inputElement = document.getElementById(`p${puzzleId}-input`);
         if(inputElement) userAnswer = inputElement.value.toUpperCase().trim();
     }
@@ -146,7 +155,7 @@ function checkAnswer(puzzleId) {
 
         const nextPuzzleId = puzzleId + 1;
         
-        if (puzzleId < 6) {
+        if (puzzleId < 7) {
             const nextPuzzleElement = document.getElementById(`puzzle-${nextPuzzleId}`);
             if (nextPuzzleElement) {
                 setTimeout(() => {
@@ -156,6 +165,12 @@ function checkAnswer(puzzleId) {
                     // ERIKOISTAPAUS: Jos avaamme sokkelon (4), luodaan sen lukko nyt
                     if (nextPuzzleId === 4) {
                         createCryptex(4, 'cryptex-4', SYMBOLS_ARROWS);
+                    }
+                    if (nextPuzzleId === 5) {
+                        createCryptex(5, 'cryptex-5', SYMBOLS_NUMBERS);
+                    }
+                    if (nextPuzzleId === 6) {
+                        createCryptex(6, 'cryptex-6', SYMBOLS_CRYPTEX, 5);
                     }
                 }, 1000);
             }
@@ -169,14 +184,6 @@ function checkAnswer(puzzleId) {
         // VÄÄRIN
         feedbackElement.textContent = 'Väärin menee. Tarkista vihjeet!';
         feedbackElement.className = 'feedback-text error';
-        
-        // Ravistusefekti tekstikentille
-        if (puzzleId !== 1 && puzzleId !== 4) {
-            const input = document.getElementById(`p${puzzleId}-input`);
-            input.classList.add('shake');
-            setTimeout(() => input.classList.remove('shake'), 500);
-            input.value = '';
-        }
     }
 }
 
@@ -187,7 +194,8 @@ function getSuccessMessage(id) {
         3: "Salaluukku naksahtaa auki!",
         4: "Pääsitte sokkelon läpi!",
         5: "Salkun lukot aukeavat!",
-        6: "Koodi purettu!"
+        6: "Koodi purettu! Salainen viesti löytyy!",
+        7: "Koodi purettu!"
     };
     return msgs[id] || "Oikein!";
 }

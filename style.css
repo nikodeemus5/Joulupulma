@@ -285,20 +285,6 @@ h1 {
     border-color: #00ff00;
 }
 
-/* Pieni animaatio väärälle vastaukselle */
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  50% { transform: translateX(5px); }
-  75% { transform: translateX(-5px); }
-  100% { transform: translateX(0); }
-}
-
-.shake {
-  animation: shake 0.3s;
-  border-color: red !important;
-}
-
 .puzzle-image {
     max-width: 100%;
     height: auto;

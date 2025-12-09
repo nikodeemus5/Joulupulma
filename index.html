@@ -133,17 +133,38 @@
             <div class="instruction-note">
                 " **** "
             </div>
+
+            <div id="cryptex-5" class="cryptex-container"></div>
             
             <div class="input-group">
-                <input type="text" id="p5-input" placeholder="Syötä koodi">
                 <button onclick="checkAnswer(5)">Avaa salkku</button>
             </div>
             <p id="p5-feedback" class="feedback-text"></p>
         </div>
 
         <div id="puzzle-6" class="puzzle-section hidden">
-            <h2>OSA 6: Salainen Viesti</h2>
-            <p>Salkku aukeaa! Sisältä löytyy Pukin kirjoittama lappu, mutta viesti on kirjoitettu salakielellä.</p>
+            <h2>OSA 6: Salkun Salalokero</h2>
+            <p>Salkku aukeaa! Sisällä on pienempi, monimutkainen lukko, jossa on Pukin salainen aakkosjärjestys. Löysitte lisäksi lapun salkusta, jossa on vihje koodiin.</p>
+
+            <div class="instruction-note">
+                Yksinäinen tonttu näki kolme poroa.<br>
+                Sitten hän tapasi kuusi muuta tonttua.<br>
+                Matkalla he löysivät seitsemän suklaapalaa.<br>
+                He jakoivat ne kuudelle tontulle.<br>
+                A = 0
+            </div>
+
+            <div id="cryptex-6" class="cryptex-container"></div>
+            
+            <div class="input-group">
+                <button onclick="checkAnswer(6)">Avaa lokero</button>
+            </div>
+            <p id="p6-feedback" class="feedback-text"></p>
+        </div>
+
+        <div id="puzzle-7" class="puzzle-section hidden">
+            <h2>OSA 7: Salainen Viesti</h2>
+            <p>Salalokero aukeaa! Sisältä löytyy Pukin kirjoittama lappu, mutta viesti on kirjoitettu salakielellä.</p>
 
             <div class="instruction-note">
                 N Z J P Z O Z Q J Z<br>
@@ -154,10 +175,10 @@
             <p>Missä Pukki on?</p>
 
             <div class="input-group">
-                <input type="text" id="p6-input" placeholder="Paikka">
+                <input type="text" id="p7-input" placeholder="Paikka">
                 <button onclick="checkAnswer(6)">Pelasta Joulu!</button>
             </div>
-            <p id="p6-feedback" class="feedback-text"></p>
+            <p id="p7-feedback" class="feedback-text"></p>
         </div>
 
         <div id="congratulations" class="puzzle-section hidden">
