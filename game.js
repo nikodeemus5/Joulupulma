@@ -22,11 +22,29 @@ let lockStates = {
     6: [0, 0, 0, 0, 0] // UUSI Pulma 6: 5 symbolia 'JOULU'
 };
 
-// Suoritetaan heti kun sivu latautuu
-document.addEventListener('DOMContentLoaded', () => {
-    // Luodaan Pulma 1 lukko heti (Numerot)
-    createCryptex(1, 'cryptex-1', SYMBOLS_NUMBERS);
-});
+/**
+ * VAIHTAA TAUSTAKUVAN PELIN VAIHEEN MUKAAN
+ */
+function updateBackground(puzzleId) {
+    const body = document.body;
+    
+    // Poistetaan ensin kaikki vanhat taustaluokat
+    body.classList.remove('bg-outdoor', 'bg-interior', 'bg-cellar', 'bg-office');
+
+    // Lisätään uusi luokka vaiheen mukaan
+    if (puzzleId === 1) {
+        body.classList.add('bg-outdoor');
+    } 
+    else if (puzzleId === 2 || puzzleId === 3) {
+        body.classList.add('bg-interior');
+    } 
+    else if (puzzleId === 4) {
+        body.classList.add('bg-cellar');
+    } 
+    else if (puzzleId >= 5) {
+        body.classList.add('bg-office');
+    }
+}
 
 /**
  * GENERIC CRYPTEX CREATOR
@@ -155,6 +173,8 @@ function checkAnswer(puzzleId) {
 
         const nextPuzzleId = puzzleId + 1;
         
+        updateBackground(nextPuzzleId);
+        
         if (puzzleId < 7) {
             const nextPuzzleElement = document.getElementById(`puzzle-${nextPuzzleId}`);
             if (nextPuzzleElement) {
@@ -202,9 +222,10 @@ function getSuccessMessage(id) {
 
 // --- Drag and Drop Logiikka Pulma 2 varten ---
 
-let draggedItem = null; // Muuttuja, joka pitää kirjaa parhaillaan raahatusta elementistä
-
 document.addEventListener('DOMContentLoaded', () => {
+    // Asetetaan alkutausta
+    updateBackground(1);
+
     // Luodaan Pulma 1 lukko heti (Numerot)
     createCryptex(1, 'cryptex-1', SYMBOLS_NUMBERS);
     
