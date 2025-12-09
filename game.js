@@ -46,6 +46,32 @@ function updateBackground(puzzleId) {
     }
 }
 
+// game.js - Lisää tämä funktio
+function preloadImages(imageArray) {
+    imageArray.forEach(url => {
+        const img = new Image(); // Luo uuden kuvaobjektin
+        img.src = url;          // Lataa kuvan selaimen muistiin
+    });
+}
+
+// game.js - KUTSU: Lisää tämä kutsu DOMContentLoaded-tapahtuman sisään
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Kutsutaan esilatausta heti alussa:
+    preloadImages([
+        'outdoor.png',
+        'interior.png',
+        'cellar.png',
+        'office.png'
+        // Voit lisätä tähän listaan myös muut kuvat, joita käytät pelissä
+    ]);
+    
+    // ... muu DOMContentLoaded-koodi jatkuu tästä ...
+    updateBackground(1);
+    createCryptex(1, 'cryptex-1', SYMBOLS_NUMBERS);
+    setupDragAndDrop(); 
+});
+
 /**
  * GENERIC CRYPTEX CREATOR
  * Luo lukon haluttuun HTML-elementtiin halutuilla symboleilla

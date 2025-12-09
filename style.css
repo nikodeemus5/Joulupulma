@@ -39,6 +39,17 @@ body.bg-office {
     background-image: url('office.png');
 }
 
+#image-preload-buffer {
+    /* Esiladataan kuvat luomalla nämä elementit, jolloin selain lataa ne välittömästi */
+    display: none; 
+}
+
+/* Esiladattavat kuvat lisätään sisältöön (content) */
+#image-preload-buffer::before {
+    content: url('outdoor.png') url('interior.png') url('cellar.png') url('office.png');
+    /* HUOM: Tämä on vanha (mutta tehokas) tekniikka, joka pakottaa selaimen lataamaan url()-sisällön. */
+}
+
 h1 {
     color: #FFD700; /* Kultainen otsikko */
     padding-bottom: 20px;
